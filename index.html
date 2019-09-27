@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+		integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+		integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+		integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+		integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+		integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+		integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="ph.css">
+	<script src="ss.js"></script>
+	<title>Document</title>
+	<script>
+
+		// var Ddate = moment().format('l');
+		// var Ttime = moment().format('LTS');
+	</script>
+
+
+</head>
+
+<body class="container">
+	<div class="row">
+
+		<!--Logo-->
+		<div class="dv1 col-12">
+			<img src="imge/title.png">
+		</div>
+		<!--Node-->
+		<div class="dv2 col-12">
+			<textarea id="Node" placeholder="Add text..." class="Node col-12"></textarea>
+		</div>
+		<br>
+		<!-- dv Date & time-->
+		<div class="row aaa">
+			<div class="col-4"></div>
+			<div class="col-3">
+				<!--Date-->
+				<input id="Datte" type="date">
+			</div>
+			<div class="col-3">
+				<!--Time-->
+				<input id="Timme" type="time">
+			</div>
+		</div><br> <br>
+		<!--Send-->
+		<div class="col-4"></div>
+		<div class="col-3">
+			<button type="button" class="btn btn-secondary" onclick="Send()">Send</button>
+		</div>
+		<!--Clear-->
+		<div class="col-3">
+			<button type="button" class="btn btn-secondary" onclick="Clear()">Clear</button>
+		</div><br>
+		<div class="col-3"></div>
+
+		<!-- Print-->
+		<div id="Print" class="row">
+
+		</div>
+		<!-- .....-->
+	</div>
+	<script>
+		if (localStorage.users) {
+
+			arr = JSON.parse(localStorage.users);
+			Pprint();
+
+		} else {
+			arr = [];
+		}
+
+
+
+		function Send() {
+
+			var upDate = document.getElementById("Datte").value;
+			var upTime = document.getElementById("Timme").value;
+			var upNode = document.getElementById("Node").value;
+			console.log(upTime);
+			var Ttime = new Date();
+			var hourT = Ttime.getHours();
+			var mintT = Ttime.getMinutes();
+
+			// if (hourT > 10) { hourT = '0' + hourT; }
+			// if (mintT > 10) { mintT = '0' + mintT; }
+			Ttime = hourT + ':' + mintT;
+			console.log(Ttime)
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth() + 1;
+			var yyy = today.getFullYear();
+			if (dd < 10) { dd = '0' + dd; }
+			if (mm < 10) { mm = '0' + mm; }
+			today = yyy + '-' + mm + '-' + dd;
+			console.log(today)
+			//giv the date and node and time and save this in var,
+			//check the date and time and node if this Empty and if this real.
+
+			if (upNode == '') {
+				alert("error set Node");
+			}
+			else if (upDate < today) {
+				alert("error is date not true");
+			}
+			else if (upTime < Ttime && upDate == today || upTime == "") {
+				alert("error is time not true");
+			}
+			else {
+				obj = {
+					Node: document.getElementById("Node").value,
+					Date: document.getElementById("Datte").value,
+					Time: document.getElementById("Timme").value,
+				};
+				arr.push(obj);
+				console.log(obj.Node)
+				Pprint();
+				localStorage.users = JSON.stringify(arr);
+				users = JSON.parse(localStorage.users);
+				console.log(arr.length + " length arr");
+			}
+
+
+		}
+		//print code HTML for length arrey
+		function Pprint() {
+			str = "";
+			for (i = 0; i < arr.length; i++) {
+				str += "<div class='dvvs'><div class='dv3'><div class='image' onclick='removeRecord(" + i + ")'></div>​<div class='dvNODE'><strong>" + arr[i].Node + "<strong/></div></div><div class='dvDate'><strong>" + arr[i].Date + "<strong/><br><strong>" + arr[i].Time + "<strong/></div></div>";
+			}
+			document.getElementById("Print").innerHTML = str;
+			localStorage.setItem("users", JSON.stringify(arr));
+		}
+
+
+		function removeRecord(i) {
+			//giv i( number the objcte in the arrey and delete this)
+			arr.splice(i, 1);
+			window.localStorage.setItem("users", JSON.stringify(arr));
+			//print the arrey again;
+			Pprint();
+		}
+
+
+
+
+		function Clear() {
+			// giv node value and time value and date value and clear this.
+			document.getElementById("Node").value = "";
+			document.getElementById("Timme").value = "";
+			document.getElementById("Datte").value = "";
+		}
+	</script>
+</body>
+
+</html>

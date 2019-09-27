@@ -1,0 +1,64 @@
+	body
+		{
+			background-image: url(imge/tile.jpg);
+		}
+		.dvNode
+		{
+			margin-left: 350px;
+			
+		}
+		.Node
+		{
+			width: 500px;
+			height: 150px;
+			background-image: url(imge/formbg.jpg);
+			text-align: center;
+			padding-top: 20px;
+			line-height: 35px;
+		}
+		.dvNidePrint
+		{
+			text-align: center;
+			margin-left: 150px;
+			
+		}
+		label {
+    display: red;
+    font: 1rem 'Fira Sans', sans-serif;
+			font-size: 30px;
+}
+		
+
+input,
+label {
+    margin: .4rem 0;
+	font-size: 20px;
+}
+
+.note {
+    font-size: .8em;
+}
+#pasta
+{
+	background-image: url(imge/notebg.png);
+	width: 200px;
+	height: 200px;
+	padding-top: 30px;
+	text-align: center;	
+}
+#dv1{
+	width: 200px;
+	height: 50px;
+	
+}
+.dv2
+{
+	width: 200px;
+	height: 150px;
+}
+
+
+
+
+
+

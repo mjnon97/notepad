@@ -1,0 +1,94 @@
+	body
+		{
+			background-image: url(imge/tile.jpg);
+		}
+	.dv1
+{
+	width: 400px;
+	
+	text-align: center;
+}
+.Node
+{
+	width: 500px;
+	height: 200px;
+	background: url(imge/formbg.jpg);
+	text-align: center;
+	margin-left: 350px;
+	padding-top: 25px;
+	line-height: 30px;
+}
+.dvvs
+{
+	width: 	200px;
+	height: 250px;
+	background: url(imge/notebg.png);
+	word-break: break-all;
+	
+
+}
+.dv3
+{
+	width: 	200px;
+	height: 180px;
+	word-break: break-all;
+	overflow: scroll;
+	
+
+}
+div.image
+{
+	width: 30px;
+	height: 30px;
+}
+div.image:hover {
+   content:url(imge/delete.png);
+	width: 30px;
+	height: 30px;
+	
+}​
+
+.Imgg
+{
+	width: 80px;
+	height: 80px;
+	
+}
+.Imgg:hover{
+	background: url(imge/delete.png);
+}
+
+.dvNODE
+{
+	padding-left: 10px;
+	padding-top: 20px;
+	width: 250px;
+	height: 170px;
+	word-break: break-all;
+	overflow: hidden;
+	color: blue;
+	text-size-adjust: 10px;
+}
+.dvDate
+{
+	padding-bottom: 5px;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+	word-break: break-all;
+	color: brown;
+}
+.dvDelet
+{
+	padding-bottom: 2px;
+	width: 250px;
+	height: 50px;
+	text-align: center;
+}
+.aaa
+{
+	text-align: center;
+	align-items: center;
+	width: 100%;
+	
+}
